@@ -105,7 +105,7 @@ namespace sweeper2
                 if(this.blipGrid[x+1][y+1].getBombstate()){
                     surroundedBombs++;
 
-                    System.Diagnostics.Debug.WriteLine("[x+11][y+1] is bomb:" +this.blipGrid[x+11][y+1].getBombstate());
+                    System.Diagnostics.Debug.WriteLine("[x+1][y+1] is bomb:" +this.blipGrid[x+1][y+1].getBombstate());
                 }
                 System.Diagnostics.Debug.WriteLine("Amount bombs:" +surroundedBombs);
             }

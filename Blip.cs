@@ -55,7 +55,7 @@ namespace sweeper2
             Random rnd = new Random();
             int num = rnd.Next(10);
             if(num < 2){
-                this.isBomb = true;
+                this.setBombState(true);
             }
         }
 
