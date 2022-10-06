@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\gitRepos\\sweeper2\\sweeper2.csproj": {}
+    "C:\\gitRepos\\sweeper2\\sweeper2.csproj": {}
   },
   "projects": {
-    "c:\\gitRepos\\sweeper2\\sweeper2.csproj": {
+    "C:\\gitRepos\\sweeper2\\sweeper2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\gitRepos\\sweeper2\\sweeper2.csproj",
+        "projectUniqueName": "C:\\gitRepos\\sweeper2\\sweeper2.csproj",
         "projectName": "sweeper2",
-        "projectPath": "c:\\gitRepos\\sweeper2\\sweeper2.csproj",
+        "projectPath": "C:\\gitRepos\\sweeper2\\sweeper2.csproj",
         "packagesPath": "C:\\Users\\troll\\.nuget\\packages\\",
-        "outputPath": "c:\\gitRepos\\sweeper2\\obj\\",
+        "outputPath": "C:\\gitRepos\\sweeper2\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

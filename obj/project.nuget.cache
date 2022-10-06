@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "5umVJn5tiGk0l2dZIgru63Iwh3vwZZXi8ysEzBV+PYAtOgOfqu70SbhXzONNiAWGJM1U8U0Ro9Lqtyxe+r7+GQ==",
+  "dgSpecHash": "wt4CnQm/kbsKMsw3NwZynGgRj0fNCt7evZZl80HVneCs5alPmL0duCFCuw4k3Jx7M6m4KiGtyxZOtuFQo6v+yw==",
   "success": true,
-  "projectFilePath": "c:\\gitRepos\\sweeper2\\sweeper2.csproj",
+  "projectFilePath": "C:\\gitRepos\\sweeper2\\sweeper2.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\troll\\.nuget\\packages\\libuv\\1.9.1\\libuv.1.9.1.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.codeanalysis.analyzers\\1.1.0\\microsoft.codeanalysis.analyzers.1.1.0.nupkg.sha512",

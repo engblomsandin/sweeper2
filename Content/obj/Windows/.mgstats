@@ -1,0 +1,5 @@
+Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
+"C:/gitRepos/sweeper2/Content/background.png","C:/gitRepos/sweeper2/Content/bin/Windows/background.xnb","TextureProcessor","Texture2DContent",856,1000085,0,1195937
+"C:/gitRepos/sweeper2/Content/bombblip.png","C:/gitRepos/sweeper2/Content/bin/Windows/bombblip.xnb","TextureProcessor","Texture2DContent",340,6485,0,0014427
+"C:/gitRepos/sweeper2/Content/markedblip.png","C:/gitRepos/sweeper2/Content/bin/Windows/markedblip.xnb","TextureProcessor","Texture2DContent",275,6485,0,002102
+"C:/gitRepos/sweeper2/Content/unmarkedblip.png","C:/gitRepos/sweeper2/Content/bin/Windows/unmarkedblip.xnb","TextureProcessor","Texture2DContent",173,6485,0,0014958

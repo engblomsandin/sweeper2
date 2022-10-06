@@ -1,6 +1,9 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+
+using System.Collections.Generic;
 
 namespace sweeper2;
 
@@ -8,6 +11,18 @@ public class Game1 : Game
 {
     private GraphicsDeviceManager _graphics;
     private SpriteBatch _spriteBatch;
+
+    private Texture2D background;
+    private Texture2D unmarkedblip;
+    private Texture2D markedblip;
+    private Texture2D bombblip;
+    private Texture2D oneblip;
+    private Texture2D twoblip;
+
+    private int rowCount = 10;
+    private int columnCount = 10;
+
+    public GridHandler gridHandler;
 
     public Game1()
     {
@@ -20,6 +35,8 @@ public class Game1 : Game
     {
         // TODO: Add your initialization logic here
 
+        
+
         base.Initialize();
     }
 
@@ -27,7 +44,15 @@ public class Game1 : Game
     {
         _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-        // TODO: use this.Content to load your game content here
+        background = Content.Load<Texture2D>("background");
+        unmarkedblip = Content.Load<Texture2D>("unmarkedblip");
+        markedblip = Content.Load<Texture2D>("markedblip");
+        bombblip = Content.Load<Texture2D>("bombblip");
+        oneblip = Content.Load<Texture2D>("oneblip");
+        twoblip = Content.Load<Texture2D>("twoblip");
+
+        gridHandler = GridHandler.Instance;
+        gridHandler.initializeGrid(rowCount,columnCount,unmarkedblip,markedblip,bombblip,oneblip,twoblip);
     }
 
     protected override void Update(GameTime gameTime)
@@ -35,7 +60,13 @@ public class Game1 : Game
         if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
             Exit();
 
-        // TODO: Add your update logic here
+        for (int i = 0; i < rowCount; i++)
+        {
+            for (int j = 0; j < columnCount; j++)
+            {
+                gridHandler.getGrid()[i][j].Update(gameTime);
+            }
+        }
 
         base.Update(gameTime);
     }
@@ -44,7 +75,21 @@ public class Game1 : Game
     {
         GraphicsDevice.Clear(Color.CornflowerBlue);
 
-        // TODO: Add your drawing code here
+        _spriteBatch.Begin();
+
+        _spriteBatch.Draw(background, new Rectangle(0, 0, 500, 500), Color.White);
+
+
+        for (int i = 0; i < rowCount; i++)
+        {
+            for (int j = 0; j < columnCount; j++)
+            {
+                gridHandler.getGrid()[i][j].Draw(gameTime, _spriteBatch);
+            }
+        }
+
+
+        _spriteBatch.End();
 
         base.Draw(gameTime);
     }
