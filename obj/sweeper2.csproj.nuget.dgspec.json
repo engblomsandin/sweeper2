@@ -1,0 +1,77 @@
+{
+  "format": 1,
+  "restore": {
+    "c:\\gitRepos\\sweeper2\\sweeper2.csproj": {}
+  },
+  "projects": {
+    "c:\\gitRepos\\sweeper2\\sweeper2.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "c:\\gitRepos\\sweeper2\\sweeper2.csproj",
+        "projectName": "sweeper2",
+        "projectPath": "c:\\gitRepos\\sweeper2\\sweeper2.csproj",
+        "packagesPath": "C:\\Users\\troll\\.nuget\\packages\\",
+        "outputPath": "c:\\gitRepos\\sweeper2\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\troll\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0-windows"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0-windows7.0": {
+            "targetAlias": "net6.0-windows",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0-windows7.0": {
+          "targetAlias": "net6.0-windows",
+          "dependencies": {
+            "MonoGame.Content.Builder.Task": {
+              "target": "Package",
+              "version": "[3.8.1.303, )"
+            },
+            "MonoGame.Framework.WindowsDX": {
+              "target": "Package",
+              "version": "[3.8.1.303, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            },
+            "Microsoft.WindowsDesktop.App.WindowsForms": {
+              "privateAssets": "none"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
