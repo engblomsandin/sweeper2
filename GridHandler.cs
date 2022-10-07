@@ -59,53 +59,30 @@ namespace sweeper2
             System.Diagnostics.Debug.WriteLine("X Cord:"+x);
             System.Diagnostics.Debug.WriteLine("Y Cord:"+y);
             int surroundedBombs = 0;
-            if(x != 0 && y != 0 && y != columnCount && x != rowCount){
-                if(this.blipGrid[x-1][y-1].getBombstate()){
-                    
+            if(x != 0 && y != 0 && y < columnCount-1 && x < rowCount - 1){
+                if(this.blipGrid[y-1][x-1].getBombstate()){
                     surroundedBombs++;
-
-                    System.Diagnostics.Debug.WriteLine("[x-1][y-1] is bomb:" +this.blipGrid[x-1][y-1].getBombstate());
                 }
-                if(this.blipGrid[x][y-1].getBombstate()){
-                    
+                if(this.blipGrid[y][x-1].getBombstate()){
                     surroundedBombs++;
-
-                    System.Diagnostics.Debug.WriteLine("[x][y-1] is bomb:" +this.blipGrid[x][y-1].getBombstate());
                 }
-                if(this.blipGrid[x+1][y-1].getBombstate()){
-                    
+                if(this.blipGrid[y+1][x-1].getBombstate()){   
                     surroundedBombs++;
-
-                    System.Diagnostics.Debug.WriteLine("[x+1][y-1] is bomb:" +this.blipGrid[x+1][y-1].getBombstate());
                 }
-
-                if(this.blipGrid[x-1][y].getBombstate()){
-                    
+                if(this.blipGrid[y-1][x].getBombstate()){
                     surroundedBombs++;
-
-                    System.Diagnostics.Debug.WriteLine("[x-1][y] is bomb:" +this.blipGrid[x-1][y].getBombstate());
                 }
-                if(this.blipGrid[x+1][y].getBombstate()){
-                    
+                if(this.blipGrid[y+1][x].getBombstate()){                   
                     surroundedBombs++;
-
-                    System.Diagnostics.Debug.WriteLine("[x+1][y] is bomb:" +this.blipGrid[x+1][y].getBombstate());
                 }
-
-                if(this.blipGrid[x-1][y+1].getBombstate()){
+                if(this.blipGrid[y-1][x+1].getBombstate()){
                     surroundedBombs++;
-
-                    System.Diagnostics.Debug.WriteLine("[x-1][y+1] is bomb:" +this.blipGrid[x-1][y+1].getBombstate());
                 }
-                if(this.blipGrid[x][y+1].getBombstate()){
+                if(this.blipGrid[y][x+1].getBombstate()){
                     surroundedBombs++;
-
-                    System.Diagnostics.Debug.WriteLine("[x][y+1] is bomb:" +this.blipGrid[x][y+1].getBombstate());
                 }
-                if(this.blipGrid[x+1][y+1].getBombstate()){
+                if(this.blipGrid[y+1][x+1].getBombstate()){
                     surroundedBombs++;
-
-                    System.Diagnostics.Debug.WriteLine("[x+1][y+1] is bomb:" +this.blipGrid[x+1][y+1].getBombstate());
                 }
                 System.Diagnostics.Debug.WriteLine("Amount bombs:" +surroundedBombs);
             }

@@ -41,14 +41,12 @@ namespace sweeper2
 
         public Blip(int x, int y, Texture2D unmarkedblip, Texture2D markedblip, Texture2D bombblip ,SpriteFont systemFont)
         {
-            this.xPosition = (x +1)  * 20;
-            this.yPosition = (y +1) * 20;
+            this.xPosition = (x+1)  * 20;
+            this.yPosition = (y+1) * 20;
 
             this.unmarkedblip = unmarkedblip;
             this.markedblip = markedblip;
             this.bombblip = bombblip;
-            this.oneblip = oneblip;
-            this.twoblip = twoblip;
             this.systemFont = systemFont;
 
             this.RightClick += this.onRightClick;
@@ -59,6 +57,8 @@ namespace sweeper2
             if(num < 2){
                 this.setBombState(true);
             }
+            
+
         }
 
         public void setBombState(bool input)
@@ -104,21 +104,29 @@ namespace sweeper2
 
         public int getxPosition()
         {
-            return this.xPosition;
+            return (this.xPosition/20)-1;
         }
         public int getyPosition()
         {
-            return this.yPosition;
+            return (this.yPosition/20)-1;
         }
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
-            if(this.isClicked){
-                spriteBatch.DrawString(this.systemFont, surroundedBombs, new Vector2(xPosition,yPosition),Color.Black );
+            if(this.isBomb){
+                spriteBatch.Draw(this.bombblip, new Rectangle(this.xPosition, this.yPosition, 20, 20), Color.White);
+            }
+            else{
+                if(this.isClicked){
+                spriteBatch.Draw(this.unmarkedblip, new Rectangle(this.xPosition, this.yPosition, 20, 20), Color.White);
+                spriteBatch.DrawString(this.systemFont, this.surroundedBombs.ToString(), new Vector2(xPosition+5,yPosition),Color.Black );
             }
             else{
                 spriteBatch.Draw(this.getMarkedState(), new Rectangle(this.xPosition, this.yPosition, 20, 20), Color.White);
             }
+
+            }
+            
             //spriteBatch.DrawString(this.systemFont, ((xPosition/20)-1) + "-"+ ((yPosition/20)-1), new Vector2(xPosition,yPosition),Color.Black );
         }
 
@@ -148,7 +156,7 @@ namespace sweeper2
         }
 
         public void successfulClick(){
-            this.surroundedBombs = gridHandler.getSurroundedBombs((xPosition/20)-1,(yPosition/20)-1);
+            this.surroundedBombs = gridHandler.getSurroundedBombs(this.getxPosition(),this.getyPosition());
             this.isClicked =true;
         }
 
