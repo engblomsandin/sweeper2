@@ -55,9 +55,6 @@ namespace sweeper2
 
         public int getSurroundedBombs(int x, int y)
         {
-            System.Diagnostics.Debug.WriteLine("List 1 Count:"+this.blipGrid[x].Count());
-            System.Diagnostics.Debug.WriteLine("X Cord:"+x);
-            System.Diagnostics.Debug.WriteLine("Y Cord:"+y);
             int surroundedBombs = 0;
             if(x != 0 && y != 0 && y < columnCount-1 && x < rowCount - 1){
                 if(this.blipGrid[y-1][x-1].getBombstate()){
@@ -84,7 +81,6 @@ namespace sweeper2
                 if(this.blipGrid[y+1][x+1].getBombstate()){
                     surroundedBombs++;
                 }
-                System.Diagnostics.Debug.WriteLine("Amount bombs:" +surroundedBombs);
             }
             return surroundedBombs;
         }
@@ -93,6 +89,37 @@ namespace sweeper2
         }
         public bool getGridState(){
             return this.gridState;
+        }
+
+        public void caveExplore(Blip blip){
+            int y = blip.getyPosition();
+            int x = blip.getxPosition();
+            if(x != 0 && y != 0 && y < columnCount-1 && x < rowCount - 1){
+                if(this.blipGrid[y-1][x-1].isClicked == false && this.blipGrid[blip.getyPosition()-1][blip.getxPosition()-1].getBombAmounts() == 0){
+                    this.blipGrid[blip.getyPosition()-1][blip.getxPosition()-1].successfulClick();
+                }
+                if(this.blipGrid[y][x-1].isClicked == false && this.blipGrid[y][x-1].getBombAmounts() == 0){
+                    this.blipGrid[y][x-1].successfulClick();
+                }
+                if(this.blipGrid[y+1][x-1].isClicked == false && this.blipGrid[y+1][x-1].getBombAmounts() == 0){   
+                    this.blipGrid[y+1][x-1].successfulClick();
+                }
+                if(this.blipGrid[y-1][x].isClicked == false && this.blipGrid[y-1][x].getBombAmounts() == 0){
+                    this.blipGrid[y-1][x].successfulClick();
+                }
+                if(this.blipGrid[y+1][x].isClicked == false && this.blipGrid[y+1][x].getBombAmounts() == 0){                   
+                    this.blipGrid[y+1][x].successfulClick();
+                }
+                if(this.blipGrid[y-1][x+1].isClicked == false && this.blipGrid[y-1][x+1].getBombAmounts() == 0){
+                    this.blipGrid[y-1][x+1].successfulClick();
+                }
+                if(this.blipGrid[y][x+1].isClicked == false && this.blipGrid[y][x+1].getBombAmounts() == 0){
+                   this.blipGrid[y][x+1].successfulClick();
+                }
+                if(this.blipGrid[y+1][x+1].isClicked == false && this.blipGrid[y+1][x+1].getBombAmounts() == 0){
+                    this.blipGrid[y+1][x+1].successfulClick();
+                }
+            }
         }
     }
 }

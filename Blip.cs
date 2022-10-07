@@ -19,7 +19,7 @@ namespace sweeper2
 
         private bool isMarked = false;
 
-        private bool isClicked = false;
+        public bool isClicked = false;
 
         private int surroundedBombs = 0;
 
@@ -97,7 +97,7 @@ namespace sweeper2
         }
         public int getBombAmounts()
         {
-            return this.surroundedBombs;
+            return gridHandler.getSurroundedBombs(this.xPosition,this.yPosition);
         }
 
         public int getxPosition()
@@ -163,6 +163,10 @@ namespace sweeper2
         {
             this.surroundedBombs = gridHandler.getSurroundedBombs(this.getxPosition(), this.getyPosition());
             this.isClicked = true;
+            if(this.surroundedBombs == 0){
+                gridHandler.caveExplore(this);
+            }
+
         }
         public void onRightClick(object sender, System.EventArgs e)
         {
@@ -177,14 +181,11 @@ namespace sweeper2
             {
                 if (isBomb)
                 {
-                    System.Diagnostics.Debug.WriteLine("BOOOm!");
                     this.boom();
                 }
                 else
                 {
-                    System.Diagnostics.Debug.WriteLine("Successful Click!");
                     this.successfulClick();
-                    System.Diagnostics.Debug.WriteLine(this.getBombAmounts());
                 }
             }
 
