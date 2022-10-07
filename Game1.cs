@@ -19,8 +19,8 @@ public class Game1 : Game
     private Texture2D bombblip;
     private SpriteFont systemFont;
 
-    private int rowCount = 20;
-    private int columnCount = 20;
+    private int rowCount = 22;
+    private int columnCount = 22;
 
     public GridHandler gridHandler;
 
@@ -60,6 +60,9 @@ public class Game1 : Game
         if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
             Exit();
 
+
+         if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.F5))
+            gridHandler.restart();
         for (int i = 0; i < rowCount; i++)
         {
             for (int j = 0; j < columnCount; j++)

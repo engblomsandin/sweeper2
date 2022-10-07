@@ -17,6 +17,8 @@ namespace sweeper2
     {
         private bool isBomb = false;
 
+        private bool isBorder = false;
+
         private bool isMarked = false;
 
         public bool isClicked = false;
@@ -32,6 +34,8 @@ namespace sweeper2
         private MouseState _currentMouse;
         private MouseState _previousMouse;
 
+
+
         private Texture2D unmarkedblip;
         private Texture2D markedblip;
         private Texture2D bombblip;
@@ -39,9 +43,12 @@ namespace sweeper2
 
         private GridHandler gridHandler = GridHandler.Instance;
 
-        public Blip(int x, int y, Texture2D unmarkedblip, Texture2D markedblip, Texture2D bombblip, SpriteFont systemFont)
+        public Blip(int x, int y, Texture2D unmarkedblip, Texture2D markedblip, Texture2D bombblip, SpriteFont systemFont, int rowCount, int columnCount)
         {
-            //(if(x == 0 || y == 0 || x columnCount))
+            if (x == 0 || y == 0 || x == columnCount - 1 || y == rowCount - 1)
+            {
+                this.isBorder = true;
+            }
             this.xPosition = (x + 1) * 20;
             this.yPosition = (y + 1) * 20;
 
@@ -54,8 +61,8 @@ namespace sweeper2
             this.LeftClick += this.onLeftClick;
 
             Random rnd = new Random();
-            int num = rnd.Next(10);
-            if (num < 2)
+            float num = rnd.Next(10);
+            if (num < 1.1 && !this.isBorder)
             {
                 this.setBombState(true);
             }
@@ -98,7 +105,7 @@ namespace sweeper2
         }
         public int getBombAmounts()
         {
-            return gridHandler.getSurroundedBombs(this.xPosition,this.yPosition);
+            return gridHandler.getSurroundedBombs(this.xPosition, this.yPosition);
         }
 
         public int getxPosition()
@@ -112,33 +119,43 @@ namespace sweeper2
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
-            if(this.gridHandler.getGridState()){
-                if (this.isClicked)
+            if (isBorder)
+            {
+                spriteBatch.Draw(this.unmarkedblip, new Rectangle(this.xPosition, this.yPosition, 20, 20), Color.Gray);
+            }
+            else
+            {
+                if (this.gridHandler.getGridState())
                 {
-                    spriteBatch.Draw(this.unmarkedblip, new Rectangle(this.xPosition, this.yPosition, 20, 20), Color.CornflowerBlue);
-                    if (surroundedBombs > 0) spriteBatch.DrawString(this.systemFont, this.surroundedBombs.ToString(), new Vector2(xPosition + 6, yPosition + 2), Color.White);
+                    if (this.isClicked)
+                    {
+                        spriteBatch.Draw(this.unmarkedblip, new Rectangle(this.xPosition, this.yPosition, 20, 20), Color.CornflowerBlue);
+                        if (surroundedBombs > 0) spriteBatch.DrawString(this.systemFont, this.surroundedBombs.ToString(), new Vector2(xPosition + 6, yPosition + 2), Color.White);
+                    }
+                    else
+                    {
+                        spriteBatch.Draw(this.getMarkedState(), new Rectangle(this.xPosition, this.yPosition, 20, 20), Color.White);
+                    }
                 }
                 else
                 {
-                    spriteBatch.Draw(this.getMarkedState(), new Rectangle(this.xPosition, this.yPosition, 20, 20), Color.White);
+                    if (this.isBomb)
+                    {
+                        spriteBatch.Draw(this.bombblip, new Rectangle(this.xPosition, this.yPosition, 20, 20), Color.CornflowerBlue);
+                    }
+                    else if (this.isClicked)
+                    {
+                        spriteBatch.Draw(this.unmarkedblip, new Rectangle(this.xPosition, this.yPosition, 20, 20), Color.CornflowerBlue);
+                        if (surroundedBombs > 0) spriteBatch.DrawString(this.systemFont, this.surroundedBombs.ToString(), new Vector2(xPosition + 6, yPosition + 2), Color.White);
+                    }
+                    else
+                    {
+                        spriteBatch.Draw(this.getMarkedState(), new Rectangle(this.xPosition, this.yPosition, 20, 20), Color.White);
+                    }
                 }
             }
-            else{
-                if(this.isBomb){
-                    spriteBatch.Draw(this.bombblip, new Rectangle(this.xPosition, this.yPosition, 20, 20), Color.CornflowerBlue);
-                }
-                else if (this.isClicked)
-                {
-                    spriteBatch.Draw(this.unmarkedblip, new Rectangle(this.xPosition, this.yPosition, 20, 20), Color.CornflowerBlue);
-                    if (surroundedBombs > 0) spriteBatch.DrawString(this.systemFont, this.surroundedBombs.ToString(), new Vector2(xPosition + 6, yPosition + 2), Color.White);
-                }
-                else
-                {
-                    spriteBatch.Draw(this.getMarkedState(), new Rectangle(this.xPosition, this.yPosition, 20, 20), Color.White);
-                }
-            }  
-        }
 
+        }
         public void Update(GameTime gameTime)
         {
             _previousMouse = _currentMouse;
@@ -155,6 +172,9 @@ namespace sweeper2
                     LeftClick?.Invoke(this, new EventArgs());
                 }
             }
+
+
+
         }
         public void boom()
         {
@@ -164,23 +184,33 @@ namespace sweeper2
         {
             this.surroundedBombs = gridHandler.getSurroundedBombs(this.getxPosition(), this.getyPosition());
             this.isClicked = true;
-            if(this.surroundedBombs == 0){
+            if (this.surroundedBombs == 0)
+            {
                 gridHandler.caveExplore(this);
             }
 
         }
         public void onRightClick(object sender, System.EventArgs e)
         {
-            if(gridHandler.getGridState()){
-                this.setMarkedState();
+            if (!isBorder)
+            {
+                if (gridHandler.getGridState())
+                {
+                    this.setMarkedState();
+                }
             }
-            
+
+
         }
         public void onLeftClick(object sender, System.EventArgs e)
         {
             if (gridHandler.getGridState())
             {
-                if (isBomb)
+                if (isMarked || isBorder)
+                {
+
+                }
+                else if (isBomb)
                 {
                     this.boom();
                 }
