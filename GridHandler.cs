@@ -12,7 +12,7 @@ namespace sweeper2
     public class GridHandler
     {
 
-
+        private bool gridState = true;
         private int rowCount = 0;
         private int columnCount = 0;
         private static GridHandler instance = null;
@@ -87,6 +87,12 @@ namespace sweeper2
                 System.Diagnostics.Debug.WriteLine("Amount bombs:" +surroundedBombs);
             }
             return surroundedBombs;
+        }
+        public void defeat(){
+            this.gridState = false;
+        }
+        public bool getGridState(){
+            return this.gridState;
         }
     }
 }

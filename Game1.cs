@@ -19,14 +19,15 @@ public class Game1 : Game
     private Texture2D bombblip;
     private SpriteFont systemFont;
 
-    private int rowCount = 10;
-    private int columnCount = 10;
+    private int rowCount = 20;
+    private int columnCount = 20;
 
     public GridHandler gridHandler;
 
     public Game1()
     {
         _graphics = new GraphicsDeviceManager(this);
+        
         Content.RootDirectory = "Content";
         IsMouseVisible = true;
     }
