@@ -1,3 +1,5 @@
+
+using System.ComponentModel;
 using System.Security.Cryptography;
 using System;
 using System.Collections.Generic;
@@ -33,12 +35,11 @@ namespace sweeper2
         private Texture2D unmarkedblip;
         private Texture2D markedblip;
         private Texture2D bombblip;
-        private Texture2D oneblip;
-        private Texture2D twoblip;
+        private SpriteFont systemFont;
 
         private GridHandler gridHandler = GridHandler.Instance;
 
-        public Blip(int x, int y, Texture2D unmarkedblip, Texture2D markedblip, Texture2D bombblip,Texture2D oneblip,Texture2D twoblip)
+        public Blip(int x, int y, Texture2D unmarkedblip, Texture2D markedblip, Texture2D bombblip ,SpriteFont systemFont)
         {
             this.xPosition = (x +1)  * 20;
             this.yPosition = (y +1) * 20;
@@ -48,6 +49,7 @@ namespace sweeper2
             this.bombblip = bombblip;
             this.oneblip = oneblip;
             this.twoblip = twoblip;
+            this.systemFont = systemFont;
 
             this.RightClick += this.onRightClick;
             this.LeftClick += this.onLeftClick;
@@ -82,15 +84,7 @@ namespace sweeper2
         }
         public Texture2D getMarkedState()
         {
-            if(isClicked){
-                if(this.surroundedBombs == 1){
-                    return this.oneblip;
-                }
-                else{
-                    return this.twoblip;
-                }
-            }
-            else if(!this.isMarked)
+            if(!this.isMarked)
             {
                 return this.unmarkedblip;
             }
@@ -119,7 +113,13 @@ namespace sweeper2
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(this.getMarkedState(), new Rectangle(this.xPosition, this.yPosition, 20, 20), Color.White);
+            if(this.isClicked){
+                spriteBatch.DrawString(this.systemFont, surroundedBombs, new Vector2(xPosition,yPosition),Color.Black );
+            }
+            else{
+                spriteBatch.Draw(this.getMarkedState(), new Rectangle(this.xPosition, this.yPosition, 20, 20), Color.White);
+            }
+            //spriteBatch.DrawString(this.systemFont, ((xPosition/20)-1) + "-"+ ((yPosition/20)-1), new Vector2(xPosition,yPosition),Color.Black );
         }
 
         public void Update(GameTime gameTime)

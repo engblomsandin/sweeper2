@@ -1,5 +1,8 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
-"C:/gitRepos/sweeper2/Content/background.png","C:/gitRepos/sweeper2/Content/bin/Windows/background.xnb","TextureProcessor","Texture2DContent",856,1000085,0,1195937
-"C:/gitRepos/sweeper2/Content/bombblip.png","C:/gitRepos/sweeper2/Content/bin/Windows/bombblip.xnb","TextureProcessor","Texture2DContent",340,6485,0,0014427
-"C:/gitRepos/sweeper2/Content/markedblip.png","C:/gitRepos/sweeper2/Content/bin/Windows/markedblip.xnb","TextureProcessor","Texture2DContent",275,6485,0,002102
-"C:/gitRepos/sweeper2/Content/unmarkedblip.png","C:/gitRepos/sweeper2/Content/bin/Windows/unmarkedblip.xnb","TextureProcessor","Texture2DContent",173,6485,0,0014958
+"C:/Users/joesxa/Documents/gitRepos/sweeper2/Content/Arial.spritefont","C:/Users/joesxa/Documents/gitRepos/sweeper2/Content/bin/Windows/SystemFont.xnb","FontDescriptionProcessor","SpriteFontContent",2068,21535,0,2452442
+"C:/Users/joesxa/Documents/gitRepos/sweeper2/Content/background.png","C:/Users/joesxa/Documents/gitRepos/sweeper2/Content/bin/Windows/background.xnb","TextureProcessor","Texture2DContent",856,1000085,0,0712048
+"C:/Users/joesxa/Documents/gitRepos/sweeper2/Content/bombblip.png","C:/Users/joesxa/Documents/gitRepos/sweeper2/Content/bin/Windows/bombblip.xnb","TextureProcessor","Texture2DContent",340,6485,0,0039767
+"C:/Users/joesxa/Documents/gitRepos/sweeper2/Content/markedblip.png","C:/Users/joesxa/Documents/gitRepos/sweeper2/Content/bin/Windows/markedblip.xnb","TextureProcessor","Texture2DContent",275,6485,0,0032729
+"C:/Users/joesxa/Documents/gitRepos/sweeper2/Content/oneblip.png","C:/Users/joesxa/Documents/gitRepos/sweeper2/Content/bin/Windows/oneblip.xnb","TextureProcessor","Texture2DContent",370,6485,0,0041132
+"C:/Users/joesxa/Documents/gitRepos/sweeper2/Content/twoblip.png","C:/Users/joesxa/Documents/gitRepos/sweeper2/Content/bin/Windows/twoblip.xnb","TextureProcessor","Texture2DContent",477,6485,0,0032907
+"C:/Users/joesxa/Documents/gitRepos/sweeper2/Content/unmarkedblip.png","C:/Users/joesxa/Documents/gitRepos/sweeper2/Content/bin/Windows/unmarkedblip.xnb","TextureProcessor","Texture2DContent",173,6485,0,0029233

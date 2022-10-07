@@ -1,4 +1,5 @@
-﻿using System;
+﻿using System.Net.Mime;
+using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -16,8 +17,7 @@ public class Game1 : Game
     private Texture2D unmarkedblip;
     private Texture2D markedblip;
     private Texture2D bombblip;
-    private Texture2D oneblip;
-    private Texture2D twoblip;
+    private SpriteFont systemFont;
 
     private int rowCount = 10;
     private int columnCount = 10;
@@ -48,11 +48,10 @@ public class Game1 : Game
         unmarkedblip = Content.Load<Texture2D>("unmarkedblip");
         markedblip = Content.Load<Texture2D>("markedblip");
         bombblip = Content.Load<Texture2D>("bombblip");
-        oneblip = Content.Load<Texture2D>("oneblip");
-        twoblip = Content.Load<Texture2D>("twoblip");
+        systemFont = Content.Load<SpriteFont>("SystemFont");
 
         gridHandler = GridHandler.Instance;
-        gridHandler.initializeGrid(rowCount,columnCount,unmarkedblip,markedblip,bombblip,oneblip,twoblip);
+        gridHandler.initializeGrid(rowCount,columnCount,unmarkedblip,markedblip,bombblip,systemFont);
     }
 
     protected override void Update(GameTime gameTime)

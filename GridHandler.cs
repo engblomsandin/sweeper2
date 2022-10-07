@@ -37,7 +37,7 @@ namespace sweeper2
             return this.blipGrid;
         }
 
-        public void initializeGrid(int rowCount, int columnCount, Texture2D unmarkedblip, Texture2D markedblip, Texture2D bombblip,Texture2D oneblip,Texture2D twoblip)
+        public void initializeGrid(int rowCount, int columnCount, Texture2D unmarkedblip, Texture2D markedblip, Texture2D bombblip,SpriteFont systemfont)
         {
             this.rowCount = rowCount;
             this.columnCount = columnCount;
@@ -48,7 +48,7 @@ namespace sweeper2
                 this.blipGrid.Add(new List<Blip>());
                 for (int j = 0; j < columnCount; j++)
                 {
-                    this.blipGrid[i].Add(new Blip(j, i, unmarkedblip, markedblip, bombblip,oneblip,twoblip));
+                    this.blipGrid[i].Add(new Blip(j, i, unmarkedblip, markedblip, bombblip,systemfont));
                 }
             }
         }
