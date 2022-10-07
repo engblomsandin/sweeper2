@@ -41,6 +41,7 @@ namespace sweeper2
 
         public Blip(int x, int y, Texture2D unmarkedblip, Texture2D markedblip, Texture2D bombblip, SpriteFont systemFont)
         {
+            //(if(x == 0 || y == 0 || x columnCount))
             this.xPosition = (x + 1) * 20;
             this.yPosition = (y + 1) * 20;
 
